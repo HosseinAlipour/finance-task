@@ -1,0 +1,4 @@
+{
+  "plugins": ["import", "prettier"],
+  "extends": ["airbnb"]
+}
