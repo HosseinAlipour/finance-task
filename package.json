@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d lib",
-    "watch": "babel -w src -d lib "
+    "watch": "babel -w src -d lib ",
+    "test": "mocha ./src/**.test.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.6",
