@@ -66,6 +66,40 @@ describe('should add numbers correctly', () => {
   });
 });
 
+describe('should subtract numbers correctly', () => {
+  it('should subtract 12 minus 10 to 2', () => {
+    const money = $(12);
+
+    money.subtract(10);
+
+    expect(money.format()).to.equal(2);
+  });
+
+  it('should subtract 12.55 minus 10 ', () => {
+    const money = $(12.55);
+
+    money.subtract(10);
+
+    expect(money.format()).to.equal(2.55);
+  });
+
+  it('should subtract 12 minus 1025', () => {
+    const money = $(12);
+
+    money.subtract(15);
+
+    expect(money.format()).to.equal(-3);
+  });
+
+  it('should subtract 2500 minus 250', () => {
+    const money = $(2500);
+
+    money.subtract(250);
+
+    expect(money.format()).to.equal(2250);
+  });
+});
+
 describe('should multiply numbers correctly', () => {
   it('should multiply 0.1 * 0.2 to yeild 0.01', () => {
     const money = $(0.1);
@@ -111,6 +145,10 @@ describe('should be chainable', () => {
 
     expect(money.multiply(3).format()).to.equal(0.45);
   });
+  it('should subtract 2500 minus 250', () => {
+    const money = $(2500);
+    expect(money.subtract(250).format()).to.equal(2250);
+  });
 });
 
 describe('should handle input type for itself', () => {
@@ -128,6 +166,12 @@ describe('should handle input type for itself', () => {
     money.multiply($(0.7));
 
     expect(money.format()).to.equal(9.1);
+  });
+
+  it('should subtract 2500 minus 250', () => {
+    const money = $(2500);
+    money.subtract($(250));
+    expect(money.format()).to.equal(2250);
   });
 });
 

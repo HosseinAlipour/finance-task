@@ -56,6 +56,15 @@ class Money {
     return this;
   }
 
+  subtract(subtractAmount) {
+    const moneyInstance = Money.validate(subtractAmount);
+
+    const modifier = 10 ** Math.abs(this.precision - moneyInstance.precision);
+    this.amount -= moneyInstance.amount * modifier;
+    this.precision = Math.max(this.precision, moneyInstance.precision);
+    return this;
+  }
+
   get value() {
     const decimalFactor = `e-${this.precision}`;
     const price = this.amount + decimalFactor;
