@@ -42,6 +42,13 @@ describe('should format numbers correctly', () => {
 });
 
 describe('should add numbers correctly', () => {
+  it('should add up 12.55 and 10 to 22.55', () => {
+    const money = $(12.55);
+
+    money.add(10);
+
+    expect(money.format()).to.equal(22.55);
+  });
   it('should add up 0.1 and 0.2 to 0.3', () => {
     const money = $(0.1);
 

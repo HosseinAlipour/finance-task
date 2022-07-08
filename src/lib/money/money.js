@@ -49,7 +49,9 @@ class Money {
   add(addAmount) {
     const moneyInstance = Money.validate(addAmount);
 
-    this.amount += moneyInstance.amount;
+    // console.log(this.precision);
+    const modifier = 10 ** Math.abs(this.precision - moneyInstance.precision);
+    this.amount += moneyInstance.amount * modifier;
     this.precision = Math.max(this.precision, moneyInstance.precision);
     return this;
   }
