@@ -93,6 +93,19 @@ describe('should multiply numbers correctly', () => {
   });
 });
 
+describe('should be chainable', () => {
+  it('should add up 0.875 and 0.125 to 1', () => {
+    const money = $(0.875);
+
+    expect(money.add(0.125).format()).to.equal(1);
+  });
+  it('should multiply 0.15 to 3 to yeild 0.45', () => {
+    const money = $(0.15);
+
+    expect(money.multiply(3).format()).to.equal(0.45);
+  });
+});
+
 describe('should handle input type for itself', () => {
   it('add', () => {
     const money = $(0.875);

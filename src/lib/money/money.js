@@ -43,6 +43,7 @@ class Money {
 
     this.amount *= moneyInstance.amount;
     this.precision += moneyInstance.precision;
+    return this;
   }
 
   add(addAmount) {
@@ -50,6 +51,7 @@ class Money {
 
     this.amount += moneyInstance.amount;
     this.precision = Math.max(this.precision, moneyInstance.precision);
+    return this;
   }
 
   get value() {
