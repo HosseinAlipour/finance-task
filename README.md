@@ -20,7 +20,7 @@ yarn --version
 to run the project clone and install packages and build the project
 
 ```
-git clone <the repository url>
+git clone https://github.com/HosseinAlipour/finance-task.git
 yarn install
 yarn build
 ```
