@@ -26,6 +26,11 @@ const [inputFilePath] = process.argv.slice(2);
       date,
     };
 
+    const app = new Application(remapRequest);
+
+    const commission = app.doTransaction(remapRequest);
+
+    console.log(commission);
     // commit to db
     fakeDbInterface.insert({ ...remapRequest, commission });
   });
