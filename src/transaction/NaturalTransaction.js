@@ -13,6 +13,15 @@ export default class NaturalTransaction extends Transaction {
       return $(amount).multiply(commisionPercent).format();
     }
 
+    // totalTransaction with this transaction goes over 1000
+    // calculates commission what's overflow 1000
+    if ($(totalTransaction).add(amount).value > 1000) {
+      const noCommission = $(1000).subtract(totalTransaction);
+      const commissionApplicable = $(amount).subtract(noCommission);
+
+      return commissionApplicable.multiply(commisionPercent).format();
+    }
+
     return 0;
   }
 }
