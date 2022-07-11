@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { expect, assert } from 'chai';
-import NaturalTransaction from './NaturalTransaction';
 import sinon from 'sinon';
+import NaturalTransaction from './NaturalTransaction';
 import dbInterface from '../lib/db/fakeDbInterface';
 
 const stub = sinon.stub(dbInterface, 'getThisWeekTotalTransaction');

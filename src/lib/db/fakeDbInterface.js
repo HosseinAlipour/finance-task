@@ -11,7 +11,7 @@ class FakeDbInterface {
     this.collection.push(obj);
   }
 
-  getThisWeekTotalTransaction(type, { userId, date, amount }) {
+  getThisWeekTotalTransaction(type, { userId, date }) {
     const total = $(0);
     this.collection.forEach((entry) => {
       const sameUserId = entry.userId === userId;
@@ -23,6 +23,8 @@ class FakeDbInterface {
       if (sameUserId && happenedThisWeek && sameType) {
         return total.add(entry.amount);
       }
+
+      return 0;
     });
 
     return total.value;
