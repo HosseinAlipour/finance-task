@@ -27,14 +27,14 @@ describe('should handle different inputs types', () => {
 });
 
 describe('should format numbers correctly', () => {
-  it('should format 0.2023 ceiled to the 2ed decimal place to yeild 0.21', () => {
+  it('should format 0.2023 ceiled to the 2ed decimal place to yield 0.21', () => {
     const money = $(0.2023);
 
     expect(money.format(2)).to.equal(0.21);
     expect(money.value).to.equal(0.2023);
   });
 
-  it('should format 0.2023 ceiled to the 3rd decimal place to yeild 0.203', () => {
+  it('should format 0.2023 ceiled to the 3rd decimal place to yield 0.203', () => {
     const money = $(0.2023);
 
     expect(money.format(3)).to.equal(0.203);
@@ -101,7 +101,7 @@ describe('should subtract numbers correctly', () => {
 });
 
 describe('should multiply numbers correctly', () => {
-  it('should multiply 0.1 * 0.2 to yeild 0.01', () => {
+  it('should multiply 0.1 * 0.2 to yield 0.01', () => {
     const money = $(0.1);
 
     money.multiply(0.2);
@@ -109,7 +109,7 @@ describe('should multiply numbers correctly', () => {
     expect(money.format()).to.equal(0.02);
   });
 
-  it('should multiply 13 * 0.7 to yeild 9.1', () => {
+  it('should multiply 13 * 0.7 to yield 9.1', () => {
     const money = $(13);
 
     money.multiply(0.7);
@@ -117,7 +117,7 @@ describe('should multiply numbers correctly', () => {
     expect(money.format()).to.equal(9.1);
   });
 
-  it('should multiply 3 to 0.15 to yeild 0.45', () => {
+  it('should multiply 3 to 0.15 to yield 0.45', () => {
     const money = $(3);
 
     money.multiply(0.15);
@@ -125,7 +125,7 @@ describe('should multiply numbers correctly', () => {
     expect(money.format()).to.equal(0.45);
   });
 
-  it('should multiply 0.15 to 3 to yeild 0.45', () => {
+  it('should multiply 0.15 to 3 to yield 0.45', () => {
     const money = $(0.15);
 
     money.multiply(3);
@@ -140,7 +140,7 @@ describe('should be chainable', () => {
 
     expect(money.add(0.125).format()).to.equal(1);
   });
-  it('should multiply 0.15 to 3 to yeild 0.45', () => {
+  it('should multiply 0.15 to 3 to yield 0.45', () => {
     const money = $(0.15);
 
     expect(money.multiply(3).format()).to.equal(0.45);
