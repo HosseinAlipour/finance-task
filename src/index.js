@@ -30,7 +30,7 @@ const [inputFilePath] = process.argv.slice(2);
 
     const commission = app.doTransaction(remapRequest);
 
-    console.log(commission);
+    console.log(Number.parseFloat(commission).toFixed(2));
     // commit to db
     fakeDbInterface.insert({ ...remapRequest, commission });
   });
