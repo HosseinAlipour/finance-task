@@ -1,5 +1,7 @@
 Thank you for allowing me to submit this task. Some notes about the project:
 
+- more unit test is not added due to complexity it might bring at this point, I would like to add more combinational generator for unit testing
+
 - To bypass Airbnb Eslint rules, I had to implement static methods, but this will be refactored when needed.
 
 - For maintainability and extensibility I would offer Typescript as it has strict type rules and it has tools to follow SOLID principles. I have included the file `example-design-in-typescript.ts` for demonstration of how I would do it in typescript, but, for the sake of following the test rules, I decided to go with node.js.
@@ -31,4 +33,4 @@ to run the code
 node ./lib YOUR_INPUT_FILE.json
 ```
 
-I look forward to hearing from you about the feedback of my task, and please do not hesitate to contact me if I can provide additional information.
+I look forward hearing from you about the feedback of my task, and please do not hesitate to contact me if I can provide additional information.
