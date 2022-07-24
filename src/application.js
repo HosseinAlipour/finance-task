@@ -2,13 +2,13 @@ import NaturalPerson from './person/NaturalPerson';
 import JuridicalPerson from './person/JuridicalPerson';
 
 export default class application {
-  constructor({ userType }) {
+  constructor({ userType, commissionConfig }) {
     switch (userType) {
       case 'juridical':
-        this.person = JuridicalPerson;
+        this.person = new JuridicalPerson(commissionConfig.juridical);
         break;
       case 'natural':
-        this.person = NaturalPerson;
+        this.person = new NaturalPerson(commissionConfig.natural);
         break;
       default:
         throw new Error('user type not recognized');

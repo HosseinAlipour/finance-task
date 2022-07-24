@@ -2,24 +2,25 @@ import Transaction from './Transaction';
 import $ from '../lib/money/money';
 import dbInterface from '../lib/db/fakeDbInterface';
 
-const commisionPercent = 0.003;
-
 export default class NaturalTransaction extends Transaction {
-  static cashOut(transaction) {
+  constructor(transactionConfig) {
+    super(transactionConfig);
+    this.cashOutConfig = transactionConfig.cashOut;
+  }
+
+  cashOut(transaction) {
     const { amount } = transaction;
     const totalTransaction = dbInterface.getThisWeekTotalTransaction('cash_out', transaction);
 
-    if (totalTransaction >= 1000) {
-      return $(amount).multiply(commisionPercent).format();
+    if (totalTransaction >= this.cashOutConfig.week_limit.amount) {
+      return $(amount).multiply(this.cashOutConfig.ratio).format();
     }
 
-    // totalTransaction with this transaction goes over 1000
-    // calculates commission what's overflow 1000
-    if ($(totalTransaction).add(amount).value > 1000) {
-      const noCommission = $(1000).subtract(totalTransaction);
+    if ($(totalTransaction).add(amount).value > this.cashOutConfig.week_limit.amount) {
+      const noCommission = $(this.cashOutConfig.week_limit.amount).subtract(totalTransaction);
       const commissionApplicable = $(amount).subtract(noCommission);
 
-      return commissionApplicable.multiply(commisionPercent).format();
+      return commissionApplicable.multiply(this.cashOutConfig.ratio).format();
     }
 
     return 0;

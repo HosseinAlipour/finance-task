@@ -1,10 +1,13 @@
 import Application from './application';
 import path from 'path';
 import fakeDbInterface from './lib/db/fakeDbInterface';
+import getCommissionConfig from './getCommissionConfig';
 
 const [inputFilePath] = process.argv.slice(2);
 
 (async () => {
+  let commissionConfig = await getCommissionConfig();
+
   const inputJson = (await import(path.resolve(inputFilePath))).default;
 
   inputJson.forEach((request) => {
@@ -24,6 +27,7 @@ const [inputFilePath] = process.argv.slice(2);
       amount,
       currency,
       date,
+      commissionConfig,
     };
 
     const app = new Application(remapRequest);

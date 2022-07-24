@@ -1,15 +1,27 @@
 /* eslint-disable no-undef */
 import { expect } from 'chai';
-import transaction from './Transaction';
+import Transaction from './Transaction';
+
+let transaction;
+beforeEach(() => {
+  transaction = new Transaction({
+    cashIn: {
+      ratio: 0.0003,
+      max: {
+        amount: 5,
+      },
+    },
+  });
+});
 
 it('cash in should yield 0.03% commission', () => {
-  expect(transaction.cashIn({ amount: 200 }))
-    .to.be.an('number')
-    .to.equal(0.06);
+  const commission = transaction.cashIn({ amount: 200 });
+
+  expect(commission).to.be.an('number').to.equal(0.06);
 });
 
 it('cash in should yield maximum 5 amount commission', () => {
-  expect(transaction.cashIn({ amount: 1000000 }))
-    .to.be.an('number')
-    .to.equal(5);
+  const commisssion = transaction.cashIn({ amount: 1000000 });
+
+  expect(commisssion).to.be.an('number').to.equal(5);
 });

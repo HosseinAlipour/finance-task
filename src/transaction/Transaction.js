@@ -1,11 +1,13 @@
 import $ from '../lib/money/money';
 
-const commisionPercent = 0.0003;
-
 export default class Transaction {
-  static cashIn({ amount }) {
-    const threePrecentOfAmount = $(amount).multiply(commisionPercent);
-    const commission = Math.min(5, threePrecentOfAmount.format());
+  constructor(transactionConfig) {
+    this.cashInConfig = transactionConfig.cashIn;
+  }
+
+  cashIn({ amount }) {
+    const threePrecentOfAmount = $(amount).multiply(this.cashInConfig.ratio);
+    const commission = Math.min(this.cashInConfig.max.amount, threePrecentOfAmount.format());
 
     return commission;
   }
